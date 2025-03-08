@@ -17,6 +17,7 @@ const Birds = () => {
     );
   };
 
+  
   const handleRemoveFromBasket = (id) => {
     setBirds(
       birds.map((bird) =>
