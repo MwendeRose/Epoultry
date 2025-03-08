@@ -1,0 +1,21 @@
+body{
+.mortality-container {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  .mortality-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .mortality-container th,
+  .mortality-container td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .mortality-container th {
+    background-color: #f0f0f0;
+  }
+}

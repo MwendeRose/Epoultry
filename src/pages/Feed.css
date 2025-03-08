@@ -1,0 +1,45 @@
+body{
+.feed-container {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  
+  .feed-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .feed-container th,
+  .feed-container td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .feed-container th {
+    background-color: #f0f0f0;
+  }
+  
+  .feed-container .summary {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between; /* Align items to the left and right */
+    align-items: center; /* Vertically center items */
+  }
+  
+  .feed-container .summary p {
+    font-weight: bold;
+  }
+  
+  .feed-container .summary button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .feed-container .summary button:hover {
+    background-color: #45a049;
+  }
+}

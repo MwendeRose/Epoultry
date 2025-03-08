@@ -1,0 +1,33 @@
+body{
+.birds-container {
+    font-family: sans-serif;
+  }
+  
+  .birds-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .birds-container th,
+  .birds-container td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .birds-container th {
+    background-color: #f0f0f0;
+  }
+  
+  .birds-container button {
+    padding: 6px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .birds-container button:hover {
+    background-color: #45a049;
+  }
+}

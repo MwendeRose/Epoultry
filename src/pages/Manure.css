@@ -1,0 +1,46 @@
+body{
+.manure-container {
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.manure-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.manure-orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.manure-orders-table th,
+.manure-orders-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.manure-orders-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.manure-orders-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.manure-orders-table .actions { /* Style for the actions column */
+    display: flex; /* Or inline-flex if you want items side by side */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.manure-orders-table .actions select {
+    padding: 5px; /* Adjust padding as needed */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Add rounded corners */
+    cursor: pointer; /* Show pointer on hover */
+}
+}

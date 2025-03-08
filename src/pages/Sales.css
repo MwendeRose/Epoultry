@@ -1,0 +1,22 @@
+body{
+.sales-container {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  
+  .sales-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sales-container th,
+  .sales-container td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .sales-container th {
+    background-color: #f0f0f0;
+  }
+}

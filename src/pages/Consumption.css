@@ -1,0 +1,22 @@
+body{
+.consumption-container {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  
+  .consumption-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .consumption-container th,
+  .consumption-container td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .consumption-container th {
+    background-color: #f0f0f0;
+  }
+}

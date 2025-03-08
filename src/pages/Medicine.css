@@ -1,0 +1,64 @@
+body{
+.medicine-container {
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.medicine-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-record-form {
+    background-color: #f0f0f0; /* Light gray background for the form */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.add-record-form h2 {
+    margin-bottom: 10px;
+}
+
+.add-record-form input,
+.add-record-form button {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    width: calc(100% - 22px); /* Subtract padding and border */
+}
+
+.add-record-form button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.add-record-form button:hover {
+    background-color: #0056b3;
+}
+.medical-records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.medical-records-table th,
+.medical-records-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.medical-records-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.medical-records-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+}

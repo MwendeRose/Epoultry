@@ -1,0 +1,107 @@
+body{
+.employee-container {
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.employee-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    border-radius: 8px; /* Rounded corners for the table */
+    overflow: hidden; /* Hide any content that overflows the rounded corners */
+}
+
+.employee-table th,
+.employee-table td {
+    padding: 12px 15px; /* Increased padding */
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Add border to the bottom of each cell*/
+    background-color: white; /* White background for better readability */
+}
+
+.employee-table th {
+    background-color: #f0f0f0; /* Light gray for header */
+    font-weight: bold;
+    text-transform: uppercase; /* Make header text uppercase */
+    color: #333; /* Darker text color for header */
+}
+
+.employee-table tr:hover {
+    background-color: #f5f5f5; /* Light gray on hover */
+}
+
+/* Styles for action buttons (Edit, Delete) */
+.employee-table .actions {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 5px; /* Space between buttons */
+}
+
+.employee-table .actions button {
+    padding: 6px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem; /* Slightly smaller font */
+    transition: background-color 0.2s; /* Smooth transition on hover */
+}
+
+.employee-table .actions button.edit {
+    background-color: #007bff; /* Blue for edit */
+    color: white;
+}
+
+.employee-table .actions button.edit:hover {
+    background-color: #0056b3;
+}
+
+.employee-table .actions button.delete {
+    background-color: #dc3545; /* Red for delete */
+    color: white;
+}
+
+.employee-table .actions button.delete:hover {
+    background-color: #c12a36;
+}
+
+/* Style for the "Add Employee" button */
+.add-employee-button {
+    background-color: #28a745; /* Green */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Space between button and table */
+    transition: background-color 0.2s;
+}
+
+.add-employee-button:hover {
+    background-color: #1e7e34;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .employee-table {
+        overflow-x: auto; /* Enable horizontal scrolling */
+    }
+
+    .employee-table th,
+    .employee-table td {
+        padding: 8px 10px; /* Reduce padding on smaller screens */
+        font-size: 0.9rem; /* Slightly smaller font */
+    }
+
+    .employee-table .actions button {
+        padding: 4px 8px; /* Reduce button padding */
+        font-size: 0.8rem; /* Smaller button font */
+    }
+}
+}

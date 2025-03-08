@@ -1,0 +1,92 @@
+body{
+.cage-container {
+    padding: 20px;
+    font-family: sans-serif;
+}
+.cage-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.video-container video {
+    max-width: 100%;
+    height: auto;
+}
+
+.storage-summary { /* Style for the summary */
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.storage-summary h2 {
+    margin-bottom: 10px;
+}
+
+.add-record-form {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.add-record-form h2 {
+    margin-bottom: 10px;
+}
+
+.add-record-form input,
+.add-record-form textarea, /* Style for textarea */
+.add-record-form button {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: calc(100% - 22px); /* Account for padding and border */
+}
+
+.add-record-form textarea { /* Textarea specific styles */
+    height: 80px; /* Adjust height as needed */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.add-record-form button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.add-record-form button:hover {
+    background-color: #0056b3;
+}
+
+.storage-records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.storage-records-table th,
+.storage-records-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.storage-records-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.storage-records-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+}

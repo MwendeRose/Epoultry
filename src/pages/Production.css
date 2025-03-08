@@ -1,0 +1,22 @@
+body{
+.production-container {
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  
+  .production-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .production-container th,
+  .production-container td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .production-container th {
+    background-color: #f0f0f0;
+  }
+}
