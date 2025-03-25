@@ -1,131 +1,111 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+require("dotenv").config();
+const express = require("express");
+//const cors = require("cors");
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 
 const app = express();
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
+const SECRET_KEY = process.env.JWT_SECRET || "your_secret_key";
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/poultrydb";
 
-app.use(cors());
-app.use(express.json());
-app.use(bodyParser.json());
+//app.use(cors());
+//app.use(express.json());
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
 
-//mongoDB  connection
-const uri = "mongodb://localhost:27017/cd "
 
-mongoose.connect(uri, {
+mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 })
-.then(() => console.log('Connected to MongoDB'))
-.catch((err) => console.error('MongoDB connection error:', err));
+.then(() => console.log("MongoDB Connected"))
+.catch(err => console.error("MongoDB Error:", err));
 
-
-const birdSchema = new mongoose.Schema({
-    type: String,
-    number: Number,
-    eggsPerDay: Number,
-    inBasket: Boolean,
-    mortality: Number,
-    purchasePrice: Number,
+const userSchema = new mongoose.Schema({
+    email: { type: String, unique: true, required: true },
+    password: { type: String, required: true },
+    resetToken: String,
+    resetTokenExpiry: Date
 });
 
-const Bird = mongoose.model('Bird', birdSchema);
+const User = mongoose.model("User", userSchema);
 
-const farmSchema = new mongoose.Schema({
-    name: String,
-    location: String,
-    owner: String,
-    // ... other farm-related fields
-});
-
-const Farm = mongoose.model('Farm', farmSchema);
-
-const feedSchema = new mongoose.Schema({
-    name: String,
-    type: String, // e.g., "starter", "grower", "finisher"
-    price: Number,
-    // ... other feed-related fields
-});
-
-const Feed = mongoose.model('Feed', feedSchema);
-
-
-// --- API Routes ---
-
-// Birds
-app.get('/api/birds', async (req, res) => {
+app.post("/api/register", async (req, res) => {
+    console.log("Incoming Request:", req.body);
     try {
-        const birds = await Bird.find();
-        res.json(birds);
-    } catch (error) {
-        console.error("Error fetching birds:", error);
-        res.status(500).json({ error: "Failed to fetch birds" });
+        const { email, password } = req.body;
+        if (!email || !password) return res.status(400).json({ message: "All fields are required" });
+
+        const existingUser = await User.findOne({ email });
+        if (existingUser) return res.status(400).json({ message: "Email already exists" });
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new User({ email, password: hashedPassword });
+        await newUser.save();
+
+        res.json({ message: "User registered successfully" });
+    } catch (err) {
+        res.status(500).json({ message: "Server error", error: err.message });
     }
 });
 
-app.post('/api/birds/add', async (req, res) => {
+
+app.post("/api/login", async (req, res) => {
     try {
-        const newBird = new Bird(req.body);
-        await newBird.save();
-        res.status(201).json(newBird);
-    } catch (error) {
-        console.error("Error adding bird:", error);
-        res.status(500).json({ error: "Failed to add bird" });
+        const { email, password } = req.body;
+        if (!email || !password) return res.status(400).json({ message: "All fields are required" });
+
+        const user = await User.findOne({ email });
+        if (!user) return res.status(401).json({ message: "Invalid email or password" });
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) return res.status(401).json({ message: "Invalid email or password" });
+
+        const token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: "1d" });
+        res.json({ token, user: { email: user.email } });
+    } catch (err) {
+        res.status(500).json({ message: "Server error", error: err.message });
     }
 });
 
-// ... (other bird routes: update, delete, etc.)
-
-// Farms
-app.get('/api/farms', async (req, res) => {
+app.post("/api/forgot-password", async (req, res) => {
     try {
-        const farms = await Farm.find();
-        res.json(farms);
-    } catch (error) {
-        console.error("Error fetching farms:", error);
-        res.status(500).json({ error: "Failed to fetch farms" });
+        const { email } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) return res.status(400).json({ message: "Email not found" });
+
+        const resetToken = crypto.randomBytes(32).toString("hex");
+        user.resetToken = resetToken;
+        user.resetTokenExpiry = Date.now() + 3600000;
+        await user.save();
+
+        res.json({ message: "Password reset link sent" });
+    } catch (err) {
+        res.status(500).json({ message: "Server error", error: err.message });
     }
 });
 
-app.post('/api/farms/add', async (req, res) => {
+app.post("/api/reset-password", async (req, res) => {
     try {
-        const newFarm = new Farm(req.body);
-        await newFarm.save();
-        res.status(201).json(newFarm);
-    } catch (error) {
-        console.error("Error adding farm:", error);
-        res.status(500).json({ error: "Failed to add farm" });
+        const { email, token, password } = req.body;
+        const user = await User.findOne({ email, resetToken: token });
+
+        if (!user || Date.now() > user.resetTokenExpiry) {
+            return res.status(400).json({ message: "Invalid or expired token" });
+        }
+
+        user.password = await bcrypt.hash(password, 10);
+        user.resetToken = null;
+        user.resetTokenExpiry = null;
+        await user.save();
+
+        res.json({ message: "Password changed successfully" });
+    } catch (err) {
+        res.status(500).json({ message: "Server error", error: err.message });
     }
 });
 
-// ... (other farm routes)
-
-// Feeds
-app.get('/api/feeds', async (req, res) => {
-    try {
-        const feeds = await Feed.find();
-        res.json(feeds);
-    } catch (error) {
-        console.error("Error fetching feeds:", error);
-        res.status(500).json({ error: "Failed to fetch feeds" });
-    }
-});
-
-app.post('/api/feeds/add', async (req, res) => {
-    try {
-        const newFeed = new Feed(req.body);
-        await newFeed.save();
-        res.status(201).json(newFeed);
-    } catch (error) {
-        console.error("Error adding feed:", error);
-        res.status(500).json({ error: "Failed to add feed" });
-    }
-});
-
-// ... (other feed routes)
-
-// Start the server
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

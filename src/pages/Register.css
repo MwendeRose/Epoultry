@@ -1,0 +1,71 @@
+/* Full-page styling with background */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: url('../Assets/background_image.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Center the container */
+.register-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9); /* Slight transparency */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Title */
+.register-container h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Input Fields */
+.register-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Register Button */
+.register-container button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.register-container button:hover {
+    background: #0056b3;
+}
+
+/* Link to Login */
+.register-container p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.register-container p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-container p a:hover {
+    text-decoration: underline;
+}

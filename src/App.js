@@ -1,8 +1,10 @@
+import Cookies from 'js-cookie'; // Ensure you have installed js-cookie: npm install js-cookie
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import * as FaIcons from 'react-icons/fa';
-import { Link, Route, BrowserRouter as Router, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, Route, BrowserRouter as Router, Routes, useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
+
 import Birds from './pages/Birds';
 import Cage from './pages/Cage';
 import Consumption from './pages/Consumption';
@@ -11,6 +13,7 @@ import Dashboard from './pages/Dashboard';
 import Eggs from './pages/Eggs';
 import Employee from './pages/Employee';
 import Feed from './pages/Feed';
+import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Manure from './pages/Manure';
 import Medicine from './pages/Medicine';
@@ -18,6 +21,7 @@ import Mortality from './pages/Mortality';
 import Orders from './pages/Orders';
 import Payroll from './pages/Payroll';
 import Production from './pages/Production';
+import Register from './pages/Register';
 import Sales from './pages/Sales';
 
 const Purchase = () => {
@@ -26,17 +30,34 @@ const Purchase = () => {
 
     return (
         <>
-            {activeTab === 'BIRDS' && <Birds/>}
-            {activeTab === 'FEED' && <Feed/>}
+            {activeTab === 'BIRDS' && <Birds />}
+            {activeTab === 'FEED' && <Feed />}
             {!activeTab && <div>Please select a purchase type.</div>}
         </>
     );
 };
 
+// Protected Route Component
+const ProtectedRoute = ({ children }) => {
+    const isAuthenticated = Cookies.get('authToken'); 
+    return isAuthenticated ? children : <Navigate to="/login" replace />;
+};
+
 const App = () => {
     return (
         <Router>
-            <AppContent />
+            <Routes>
+                {/* Public Routes */}
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+
+                {/* Protected Routes */}
+                <Route path="/*" element={
+                    <ProtectedRoute>
+                        <AppContent />
+                    </ProtectedRoute>
+                } />
+            </Routes>
         </Router>
     );
 };
@@ -109,11 +130,6 @@ const AppContent = () => {
                     <li className={activeTab === 'Feed' ? 'active' : ''}>
                         <Link to="/Feed" onClick={() => handleTabClick('Feed')}>
                             <FaIcons.FaSeedling /> Feed
-                        </Link>
-                    </li>
-                    <li className={activeTab === 'FeedPurchase' ? 'active' : ''}>
-                        <Link to="/Purchase?type=FEED" onClick={() => handleTabClick('FeedPurchase')}>
-                            <FaIcons.FaShoppingCart /> Feed Purchase
                         </Link>
                     </li>
                     <li className={activeTab === 'Orders' ? 'active' : ''}>
