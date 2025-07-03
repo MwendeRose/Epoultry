@@ -7,54 +7,85 @@ const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!password) {
-            setMessage('Password is required!');
+        if (!email || !password) {
+            setMessage('Both email and password are required!');
             return;
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/login', { email, password });
+            const response = await axios.post('http://localhost:5000/api/login', { 
+                email, 
+                password 
+            });
 
-            localStorage.setItem('token', response.data.token);
-            navigate('/src/App.js'); // Redirect to App.js or the main application
+            if (rememberMe) {
+                localStorage.setItem('token', response.data.token);
+            } else {
+                sessionStorage.setItem('token', response.data.token);
+            }
+            
+            navigate('/dashboard');
         } catch (error) {
-            setMessage(error.response?.data?.message || 'Invalid email or password.');
+            setMessage(error.response?.data?.message || 'Login failed. Please try again.');
         }
     };
 
     return (
         <div className="login-page">
-            <div className="login-container">
-                <h2>Login</h2>
-                {message && <div className="message">{message}</div>}
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="email"
-                        placeholder="Enter Email Address"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="password"
-                        placeholder="Enter Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                    <div className="remember-me">
-                        <input type="checkbox" id="remember" />
-                        <label htmlFor="remember"> Remember me</label>
+            <div className="login-card">
+                <h2 className="login-title">Welcome Back</h2>
+                {message && <div className="login-message">{message}</div>}
+                
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="email">Email Address</label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            autoComplete="username"
+                        />
                     </div>
-                    <button type="submit">Log In</button>
+                    
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                            autoComplete="current-password"
+                        />
+                    </div>
+                    
+                    <div className="form-options">
+                        <div className="remember-me">
+                            <input
+                                type="checkbox"
+                                id="remember"
+                                checked={rememberMe}
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                            />
+                            <label htmlFor="remember">Remember me</label>
+                        </div>
+                        <a href="/forgot-password" className="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" className="login-button">Log In</button>
                 </form>
-                <p><a href="/forgot-password">Forgot your password?</a></p>
-                <p>Don't have an account? <a href="/register">Register Now</a></p>
+                
+                <div className="register-prompt">
+                    Don't have an account? <a href="/register">Sign up</a>
+                </div>
             </div>
         </div>
     );

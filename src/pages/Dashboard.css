@@ -1,20 +1,17 @@
-/* Dashboard.css */
-
 body {
   font-family: 'Arial', sans-serif;
   color: #333;
   margin: 0;
-  overflow-x: hidden; /* Prevent horizontal scroll on body */
+  overflow-x: hidden;
 }
 
 .dashboard-container {
   display: grid;
-  grid-template-rows: auto 1fr auto; /* Header, Content, Footer */
+  grid-template-rows: auto 1fr auto; 
   min-height: 100vh;
   max-height: 100vh;
-  overflow-y: auto; /* Allow scrolling within container */
-  width: 960px; /* Or a percentage for fluid width */
-  max-width: 95%; /* Prevent container from overflowing */
+  overflow-y: auto; 
+  width: 960px; 
   margin: 0 auto;
 }
 
@@ -179,8 +176,6 @@ body {
   margin: 5px 0;
 }
 
-
-/* Media Queries - Adjust breakpoints and styles as needed */
 @media (max-width: 1200px) {
 .dashboard-container {
   width: 90%;
@@ -193,11 +188,10 @@ body {
   }
 
   .service-items {
-      grid-template-columns: repeat(2, 1fr); /* Two columns */
-  }
+      grid-template-columns: repeat(2, 1fr); 
 
   .highlight-section {
-      grid-template-columns: 1fr; /* One column */
+      grid-template-columns: 1fr; 
   }
 }
 
@@ -211,15 +205,15 @@ body {
   }
 
   .service-items {
-      grid-template-columns: 1fr; /* One column */
+      grid-template-columns: 1fr; 
   }
 
   .highlight-section {
-      grid-template-columns: 1fr; /* One column */
+      grid-template-columns: 1fr; 
   }
 
   .footer {
-      flex-direction: column; /* Stack footer columns */
+      flex-direction: column;
       text-align: center;
   }
 }
@@ -238,10 +232,10 @@ body {
 }
 
 .service-items {
-    grid-template-columns: 1fr; /* One column */
+    grid-template-columns: 1fr; 
 }
 
   .highlight-section {
-      grid-template-columns: 1fr; /* One column */
+      grid-template-columns: 1fr; 
   }
-}
+}}
