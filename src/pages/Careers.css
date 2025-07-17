@@ -1,0 +1,139 @@
+/* Container */
+.careers-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.careers-container h1 {
+  text-align: center;
+  color: #004d40;
+  margin-bottom: 5px;
+  font-size: 28px;
+}
+
+.careers-container > p {
+  text-align: center;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  font-size: 14px;
+}
+
+.careers-content {
+  display: flex;
+  gap: 20px;
+}
+
+.job-listings {
+  flex: 1;
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+.job-listings h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.job-item {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  font-size: 14px;
+}
+
+.job-item:hover,
+.job-item.active {
+  background: #004d40;
+  color: #fff;
+}
+
+.job-item h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.job-item p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.job-details {
+  flex: 2;
+  padding-left: 10px;
+}
+
+.job-details h2 {
+  margin-top: 0;
+  color: #004d40;
+  font-size: 20px;
+}
+
+.job-details p {
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.apply-form {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.apply-form input,
+.apply-form textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.apply-form textarea {
+  min-height: 80px;
+}
+
+.apply-form button {
+  width: fit-content;
+  padding: 10px 20px;
+  background: #004d40;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: background 0.3s ease;
+}
+
+.apply-form button:hover {
+  background: #00695c;
+}
+
+/* Responsive layout: stack for small screens */
+@media (max-width: 900px) {
+  .careers-content {
+    flex-direction: column;
+  }
+
+  .job-listings {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    padding-right: 0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .job-details {
+    padding-left: 0;
+  }
+}

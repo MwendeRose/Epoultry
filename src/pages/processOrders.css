@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.farm-dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 230px;
+  background: #d4edda;
+  color: #000;
+  padding: 20px;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar button {
+  background: #c3e6cb;
+  color: #000;
+  border: none;
+  margin: 5px 0;
+  padding: 10px 12px;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 4px;
+}
+
+.sidebar button:hover {
+  background: #b1dfbb;
+}
+
+.back-button {
+  margin-top: 20px;
+  background: #b1dfbb 
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background: #d1ecf1; /* Light blue */
+}
+
+.content-section {
+  background: #fff;
+  padding: 25px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.content-section h2 {
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: #fff;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+}
+
+table th {
+  background: #f8f9fa;
+  text-align: left;
+}
+
+.action-buttons button {
+  margin-right: 6px;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,138 @@
+html, body, #root, .report-page {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.report-header {
+  flex: 0 0 auto;
+  background: #065f46;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.report-body {
+  flex: 1 1 auto;
+  display: flex;
+  overflow: hidden;
+}
+
+.report-sidenav {
+  width: 220px;
+  background: #f1f5f9;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.report-sidenav select,
+.download-btn {
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.download-btn {
+  background: #10b981;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.report-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.summary-section {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.summary-card {
+  background: #ecfdf5;
+  padding: 0.75rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.summary-card.revenue {
+  background: #d1fae5;
+}
+
+.summary-card.expenses {
+  background: #fee2e2;
+}
+
+.details-section {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 2rem;
+  overflow: auto;
+  margin-top: 1rem;
+}
+
+.top-products, .expenses-breakdown {
+  flex: 1;
+  background: #fff;
+}
+
+.top-products ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.top-products li {
+  background: #f9fafb;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  background: #065f46;
+  color: #fff;
+  padding: 0 6px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.expenses-breakdown table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.expenses-breakdown th,
+.expenses-breakdown td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+}
+
+.expenses-breakdown thead {
+  background: #065f46;
+  color: #fff;
+}
+
+.back-btn {
+  background: #fff;
+  color: #065f46;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}

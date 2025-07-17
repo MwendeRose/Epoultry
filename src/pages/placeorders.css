@@ -1,0 +1,104 @@
+/* placeorders.css */
+
+body {
+  background: #e8f5e9; /* Light green background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.place-orders-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  width: 100%;
+}
+
+.form-card h1 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 0.75rem 1rem;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.order-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.order-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.order-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.order-form input:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #45a049;
+}
+/* Wrapper to make footer fit properly */
+.place-orders-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #e8f5e9; /* Light green background */
+}
+
+.place-orders-container {
+  flex: 1; /* Take remaining space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.footer {
+  background: #4caf50;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}

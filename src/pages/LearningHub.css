@@ -1,0 +1,118 @@
+
+.learning-hub-wrapper {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow-y: auto; 
+}
+
+body {
+  overflow-x: hidden; 
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 1rem;
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background: #333;
+}
+
+/* ✨ Hero section */
+.hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.training-details {
+  margin-bottom: 2rem;
+}
+
+.training-details h2 {
+  margin-bottom: 0.5rem;
+}
+
+.training-details ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.training-details li {
+  background: #f0f0f0;
+  margin: 0.4rem 0;
+  padding: 0.6rem;
+  border-radius: 4px;
+}
+
+/* ✅ Why train with us section */
+.why-train {
+  margin-bottom: 2rem;
+}
+
+.why-train h2 {
+  margin-bottom: 0.5rem;
+}
+
+.why-train p {
+  line-height: 1.5;
+}
+
+.call-to-action {
+  text-align: center;
+}
+
+.call-to-action h2 {
+  margin-bottom: 0.5rem;
+}
+
+.call-to-action p {
+  margin-bottom: 0.5rem;
+}
+
+.contact-info p {
+  margin: 0.2rem 0;
+}
+
+.cta-btn {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.cta-btn:hover {
+  background: #449d48;
+}
+
+@media (max-width: 768px) {
+  .learning-hub-wrapper {
+    padding: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+}

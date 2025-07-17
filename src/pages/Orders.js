@@ -1,83 +1,92 @@
 import React, { useState } from 'react';
-import './Orders.css'; // Import the CSS file
+import './Orders.css';
 
-const App = () => {
+const Orders = () => {
   const [orders, setOrders] = useState([
-    { id: 33, customer: 'lene', description: 'fgh', dateReceived: '2023-01-27', amount: 200.00, balance: 0.00 },
-    { id: 34, customer: 'Allan Mule', description: '', dateReceived: '0000-00-00', amount: 0.00, balance: 0.00 },
-    { id: 35, customer: 'Jene', description: 'Eges', dateReceived: '2023-09-04', amount: 50.00, balance: 30.00 },
-    { id: 36, customer: 'Pruebo', description: 'Huevo', dateReceived: '2023-09-09', amount: 200.00, balance: 0.00 },
+    { id: 101, customer: 'Lene Poultry', description: '50 Broiler Chicks', dateReceived: '2024-07-15', amount: 2500.00, balance: 0.00 },
+    { id: 102, customer: 'Allan Mule', description: '20 Layers Feed Bags', dateReceived: '2024-07-10', amount: 12000.00, balance: 3000.00 },
+    { id: 103, customer: 'Jane K.', description: 'Egg supply - 15 trays', dateReceived: '2024-07-12', amount: 4500.00, balance: 0.00 },
+    { id: 104, customer: 'Pruebo Farm', description: 'Organic Fertilizer - 5 tons', dateReceived: '2024-07-14', amount: 18000.00, balance: 5000.00 },
   ]);
 
   const [newOrder, setNewOrder] = useState({
     customer: '',
     description: '',
     dateReceived: '',
-    amount: 0.00,
-    balance: 0.00,
+    amount: '',
+    balance: '',
   });
 
   const handleInputChange = (e) => {
     setNewOrder({ ...newOrder, [e.target.name]: e.target.value });
   };
 
-  const handleDateChange = (e) => {
-    setNewOrder({ ...newOrder, dateReceived: e.target.value });
-  };
-
   const handleAddOrder = () => {
+    if (!newOrder.customer || !newOrder.amount) {
+      alert('Customer and Amount are required.');
+      return;
+    }
+
+    const newId = orders.length ? Math.max(...orders.map(o => o.id)) + 1 : 1;
+
     setOrders([
       ...orders,
       {
-        id: orders.length + 1,
+        id: newId,
         ...newOrder,
+        amount: parseFloat(newOrder.amount),
+        balance: parseFloat(newOrder.balance) || 0,
       },
     ]);
+
     setNewOrder({
       customer: '',
       description: '',
       dateReceived: '',
-      amount: 0.00,
-      balance: 0.00,
+      amount: '',
+      balance: '',
     });
   };
 
   const handleDelete = (id) => {
-    setOrders(orders.filter((order) => order.id !== id));
+    if (window.confirm('Are you sure you want to delete this order?')) {
+      setOrders(orders.filter((order) => order.id !== id));
+    }
   };
 
   return (
-    <div className="container">
-      <h1>VIEW ORDERS</h1>
-      <button className="add-sales">Add Sales</button>
+    <div className="orders-container">
+      <div className="orders-header">
+        <h2>Customer Orders</h2>
+        <button className="add-sales-btn">+ Add Sales</button>
+      </div>
 
-      <div className="search-entries">
-        <label htmlFor="entries">
+      <div className="search-bar">
+        <label>
           Show
-          <select name="entries" id="entries">
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
+          <select>
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
           </select>
           entries
         </label>
-        <label htmlFor="search">
+        <label>
           Search:
-          <input type="text" name="search" id="search" />
+          <input type="text" placeholder="Search orders..." />
         </label>
       </div>
 
-      <table>
+      <table className="orders-table">
         <thead>
           <tr>
-            <th>Order #</th>
+            <th>#</th>
             <th>Customer</th>
-            <th>Description</th>
-            <th>Date Received</th>
-            <th>Amount</th>
-            <th>Balance</th>
-            <th>Action</th>
+            <th>Order Details</th>
+            <th>Date</th>
+            <th>Amount (KES)</th>
+            <th>Balance (KES)</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -90,31 +99,59 @@ const App = () => {
               <td>{order.amount.toFixed(2)}</td>
               <td>{order.balance.toFixed(2)}</td>
               <td>
-                <button className="receipt">Receipt</button>
-                <button className="update">Update</button>
-                <button className="delete" onClick={() => handleDelete(order.id)}>
-                  DELETE
-                </button>
+                <button className="action-btn receipt">Receipt</button>
+                <button className="action-btn update">Update</button>
+                <button className="action-btn delete" onClick={() => handleDelete(order.id)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <h2>Add New Order</h2>
-      <form>
-        <input type="text" name="customer" placeholder="Customer" value={newOrder.customer} onChange={handleInputChange} />
-        <input type="text" name="description" placeholder="Description" value={newOrder.description} onChange={handleInputChange} />
-        <label htmlFor="dateReceived">Date Received:</label>
-        <input type="date" id="dateReceived" name="dateReceived" value={newOrder.dateReceived} onChange={handleDateChange} />
-        <input type="number" name="amount" placeholder="Amount" value={newOrder.amount} onChange={handleInputChange} step="0.01" />
-        <input type="number" name="balance" placeholder="Balance" value={newOrder.balance} onChange={handleInputChange} step="0.01" />
-        <button type="button" onClick={handleAddOrder}>
-          Add Order
-        </button>
-      </form>
+      <div className="add-order-section">
+        <h3>New Order</h3>
+        <div className="add-order-form">
+          <input
+            type="text"
+            name="customer"
+            placeholder="Customer Name"
+            value={newOrder.customer}
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            name="description"
+            placeholder="Order Details"
+            value={newOrder.description}
+            onChange={handleInputChange}
+          />
+          <input
+            type="date"
+            name="dateReceived"
+            value={newOrder.dateReceived}
+            onChange={handleInputChange}
+          />
+          <input
+            type="number"
+            name="amount"
+            placeholder="Amount (KES)"
+            value={newOrder.amount}
+            onChange={handleInputChange}
+          />
+          <input
+            type="number"
+            name="balance"
+            placeholder="Balance (KES)"
+            value={newOrder.balance}
+            onChange={handleInputChange}
+          />
+          <button className="submit-btn" type="button" onClick={handleAddOrder}>
+            Add Order
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default App;
+export default Orders;

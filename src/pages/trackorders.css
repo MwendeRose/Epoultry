@@ -1,0 +1,94 @@
+.track-orders {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 0 20px;
+  font-family: Arial, sans-serif;
+}
+
+.track-orders h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.top-bar {
+  margin-bottom: 20px;
+}
+
+.back-link {
+  display: inline-block;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.search-box {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.orders {
+  display: grid;
+  gap: 20px;
+}
+
+.order-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.order-card h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.status.in-transit {
+  background: #007bff;
+}
+
+.status.delivered {
+  background: #28a745;
+}
+
+.status.pending {
+  background: #ffc107;
+}
+.details-btn {
+  display: inline-block;
+  margin-right: 15px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.details-btn:hover {
+  background: #0056b3;
+}
+
+.order-details {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-top: 1px solid #ddd;
+  border-radius: 0 0 8px 8px;
+}

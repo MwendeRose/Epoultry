@@ -1,21 +1,66 @@
-body{
 .mortality-container {
-    font-family: sans-serif;
-    padding: 20px;
-  }
-  .mortality-container table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .mortality-container th,
-  .mortality-container td {
-    padding: 8px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  .mortality-container th {
-    background-color: #f0f0f0;
-  }
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.mortality-summary {
+  margin-bottom: 1rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.mortality-summary p {
+  margin: 0.3rem 0;
+}
+
+.mortality-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  margin-bottom: 1rem;
+}
+
+.mortality-table th,
+.mortality-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.mortality-table th {
+  background: #eee;
+}
+
+.add-record-form {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.add-record-form label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.add-record-form input,
+.add-record-form select,
+.add-record-form textarea {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.2rem;
+  box-sizing: border-box;
+}
+
+.add-record-form button {
+  margin-top: 0.8rem;
+  padding: 0.6rem 1rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
 }

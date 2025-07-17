@@ -1,95 +1,95 @@
 import React from 'react';
-import bestHens from '../Assets/Besthens.webp';
-import farmsVideo from '../Assets/Farmvideo.mp4';
-import chicks from '../Assets/chicks.avif';
-import eggs from '../Assets/eggs.avif';
-import organicEggs from '../Assets/organic eggs.webp';
-import ourFarms from '../Assets/our farm.webp';
+import { Link, useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="dashboard-container">
-      <nav className="top-nav">
-        <div className="logo">FARMS</div>
-        <ul className="nav-links">
-          <li><a href="/about">About</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-        <div className="contact-info">
-          <a href="tel:0114727285">123-456-7890</a>
+    <div className="dashboard">
+      <header className="dashboard-header compact">
+        <h1>POULTRY FARMING SYSTEM</h1>
+        <div className="header-controls">
+          <nav>
+            <ul className="top-nav">
+              <li><Link to="/foods">Foods</Link></li>
+              <li><Link to="/Learninghub">LearningHub</Link></li>
+              <li><Link to="/careers">Careers</Link></li>
+              <li><Link to="/BookNow">BookNow</Link></li>
+            </ul>
+          </nav>
+          <button className="back-button" onClick={() => navigate('/')}>
+            &larr; Back to Home
+          </button>
         </div>
-      </nav>
+      </header>
 
-      <section className="hero-section">
-        <div className="hero-content">
-          <h1>Fresh Eggs for You <span>EVERYDAY!</span></h1>
-          <p>Taste our Delicious and nutritious eggs</p>
-          <button className="hero-btn">View All Products</button>
-        </div>
-        <img className="hero-image" src={chicks} alt="Chicks" />
-      </section>
-
-      <section className="quality-service">
-        <h2>Quality Poultry Friendly Service</h2>
-        <div className="service-items">
-          <div className="service-item">
-            <img src={bestHens} alt="Best Hens" />
-            <h3>The Best Hens</h3>
-          </div>
-          <div className="service-item">
-            <img src={organicEggs} alt="Organic Eggs" />
-            <h3>Organic Eggs</h3>
-          </div>
-          <div className="service-item">
-            <img src={ourFarms} alt="Our Farms" />
-            <h3>Our Farms</h3>
-          </div>
-        </div>
-      </section>
-
-      <section className="highlight-section">
-        <div className="highlight-item">
-          <img src={eggs} alt="Eggs" />
-          <h3>Eggs</h3>
-        </div>
-        <div className="highlight-video">
-          <video src={farmsVideo} controls poster={eggs}>
-            Your browser does not support the video tag.
-          </video>
-          <h3>Farms Video</h3>
-        </div>
-      </section>
-
-      <section className="about-section">
-        <h2>About Poultry Farm Company</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <button className="about-btn">View More</button>
-      </section>
-
-      <footer className="footer">
-        <div className="footer-column">
-          <h4>Poultry Farm</h4>
+      <div className="dashboard-body">
+        <aside className="sidebar">
           <ul>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/services">Services</a></li>
-            <li><a href="/contact">Contact Us</a></li>
+            <li><Link to="/dashboard">Dashboard Home</Link></li>
+            <li><Link to="/ProcessOrders">Process Orders</Link></li>
+            <li><Link to="/ManageInventory">Manage Inventory</Link></li>
+            <li><Link to="/ManageSupplies">Manage Supplies</Link></li>
+            <li><Link to="/GenerateReports">Generate Reports</Link></li>
+            <li><Link to="/OrderRequests">Order Requests</Link></li>
+            <li><Link to="/TrackOrders">Track Orders</Link></li>
+            <li><Link to="/shop">Shop Now</Link></li>
+            <li><Link to="/PlaceOrders">Place Orders</Link></li>
+            <li><Link to="/faq">FAQ</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
           </ul>
-        </div>
-        <div className="footer-column">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/blog">Blog</a></li>
-          </ul>
-        </div>
-        <div className="footer-column">
-          <h4>Contact Info</h4>
-          <p>123 Main Street, Anytown</p>
-          <p>Email: rsimba@kabarak.ac.ke</p>
-          <p>Phone: 0114727285</p>
+        </aside>
+
+        <main className="dashboard-content">
+          <section className="hero">
+            <h2>Enable Shared Prosperity Through Sustainable Food Production</h2>
+            <p>
+              We work to ensure everyone has access to safe, healthy, and sustainable food while creating wealth for our communities.
+            </p>
+          </section>
+
+          <section className="cards">
+            <div className="card">
+              <h3>Farm to Farm</h3>
+              <p>Trace our chicks from hatch to your poultry farm.</p>
+              <button onClick={() => navigate('/farm-to-farm')}>Learn More</button>
+            </div>
+
+            <div className="card">
+              <h3>Farm to Family</h3>
+              <p>Healthy kuku meals from our farms to your table.</p>
+              <button onClick={() => navigate('/farm-to-family')}>View Product Range</button>
+            </div>
+
+            <div className="card">
+              <h3>Careers</h3>
+              <p>Join a team of passionate professionals.</p>
+              <button onClick={() => navigate('/careers')}>Explore Opportunities</button>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <footer className="dashboard-footer">
+        <div className="footer-spread">
+          <div className="footer-info">
+            <p><strong>Location:</strong> Exsan Hse, Enterprise Rd, Nairobi</p>
+            <p><strong>Email:</strong> rsimba@kabarak.ac.ke</p>
+            <p><strong>Phone:</strong> +254 797 419 279</p>
+          </div>
+
+          <div className="footer-links">
+            <p><a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
+            <p>© 2025 Epoultry</p>
+          </div>
+
+          <div className="footer-social">
+            <a href="#" aria-label="Facebook">Fb</a>
+            <a href="#" aria-label="Twitter">Tw</a>
+            <a href="#" aria-label="LinkedIn">In</a>
+            <a href="#" aria-label="Instagram">Ig</a>
+          </div>
         </div>
       </footer>
     </div>

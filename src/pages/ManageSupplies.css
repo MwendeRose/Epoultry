@@ -1,0 +1,99 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.inventory-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  color: #065f46;
+}
+
+.back-btn {
+  background: #065f46;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.inventory-list {
+  margin-top: 1.5rem;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #065f46;
+  color: #fff;
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+table input {
+  width: 70px;
+}
+
+.delete-btn {
+  background: #dc2626;
+  border: none;
+  color: #fff;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-form {
+  margin-top: auto; /* stick to bottom if possible */
+  background: #f1f5f9;
+  padding: 1rem;
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.add-form h3 {
+  flex-basis: 100%;
+  margin: 0;
+  color: #065f46;
+}
+
+.add-form input, .add-form select {
+  padding: 0.5rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.add-form button {
+  background: #10b981;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}

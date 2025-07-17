@@ -1,63 +1,55 @@
-body{
 .payroll-container {
-  font-family: sans-serif;
-  margin: 20px;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.payroll-container h1 {
+  margin-bottom: 1rem;
+}
+
+.generate-btn {
+  background: #4caf50;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .payroll-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin: 1rem 0;
+  background: #fff;
 }
 
-.payroll-table th, .payroll-table td {
+.payroll-table th,
+.payroll-table td {
   border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left; 
-}
-
-.payroll-table th {
-  background-color: #f0f0f0; 
-}
-
-.payroll-table tr:nth-child(even) {
-  background-color: #f5f5f5; 
-}
-
-.payroll-summary {
-  border: 1px solid #ddd;
-  padding: 10px;
-  background-color: #f9f9f9;
-}
-
-.payroll-summary h2 {
-  margin-top: 0;
-}
-}
-.payroll-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.payroll-table th, .payroll-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  padding: 0.5rem;
   text-align: left;
 }
 
-.payroll-summary {
-  margin-top: 20px;
+.payroll-table th {
+  background: #eee;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
+.download-btn {
+  background: #2196f3;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
   border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
   cursor: pointer;
+}
+
+.payroll-summary {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
 }
